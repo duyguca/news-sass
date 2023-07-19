@@ -1,0 +1,19 @@
+{
+  "name": "news-sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass sass/main.scss css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-duyguca:duyguca/news-sass.git"
+  },
+  "author": "duygu koksal",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^9.0.0",
+    "sass": "^1.63.6"
+  }
+}
