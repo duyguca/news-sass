@@ -8,20 +8,24 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* header */
+// HEADER STARTS HERE //
 
-/* Outer navigation wrapper */
+header {
+  background-color: $color-primary;
+}
 .navigation {
+  @extend %container;
   height: $nav-height;
   background-color: $color-primary;
   position: relative;
   .title {
     position: absolute;
-    padding-left: 20px;
     float: left;
     line-height: $line-height;
     text-transform: uppercase;
     font-size: 1.4em;
+    margin-top: 1rem;
+    font-style: italic;
     a,
     a:visited {
       color: $color-white;
@@ -39,7 +43,7 @@
     .logo {
       position: absolute;
       width: 50px;
-      top: 1rem;
+      top: 0rem;
       left: 5rem;
       transform: rotate(15deg);
       animation-duration: 2s;
@@ -86,7 +90,6 @@ nav {
   ul {
     @include reset-list;
     li {
-      float: left;
       position: relative;
       &:hover {
         background: $color-white;
@@ -95,20 +98,18 @@ nav {
         transition: color 0.3s;
       }
       a,
+      a:focus,
+      a:active,
       a:visited {
         display: block;
-        padding: 0 20px;
+        padding: 1rem;
         line-height: $line-height;
         background: $color-primary;
         color: $color-white;
         text-decoration: none;
         &:hover {
-          background-color: $color-tertiary;
+          background-color: #bc1a35;
           color: $color-white;
-        }
-        &:not(:only-child):after {
-          padding-left: 4px;
-          content: " ▾";
         }
       }
 
@@ -116,7 +117,7 @@ nav {
       ul li {
         min-width: 190px;
         a {
-          padding: 15px;
+          padding-left: 15px;
           line-height: $line-height;
         }
         .nav-dropdown {
@@ -135,17 +136,18 @@ nav {
     display: none;
     position: absolute;
     z-index: 1000;
-    top: $nav-height;
+    top: 4rem;
     right: 0;
-    width: 100%;
+    left: 0;
+    max-width: 100%;
     background-color: $color-secondary;
     margin-top: 0;
-    padding: 1rem 0 0 3rem;
+
     text-align: center;
-    gap: 2px;
+    // gap: 2px;
     a {
       color: $color-black;
-      font-size: 1.5rem;
+      font-size: 1rem;
       &:link {
         text-decoration: none;
       }
@@ -173,6 +175,18 @@ main {
   width: 100%;
   margin: auto;
 }
+%post-content {
+  width: 100%;
+  max-width: 640px;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  padding: 1rem 0.5rem;
+  z-index: 999;
+  margin: auto;
+  margin-top: 0;
+  right: 0;
+}
 
 .hero-section {
   display: flex;
@@ -193,16 +207,7 @@ main {
       }
     }
     .post-inner-content {
-      width: 100%;
-      max-width: 640px;
-      position: relative;
-      text-align: center;
-      background-color: #fff;
-      padding: 1rem 0.5rem;
-      z-index: 999;
-      margin: auto;
-      margin-top: 0;
-      right: 0;
+      @extend %post-content;
       aside {
         .date {
           list-style: none;
@@ -232,7 +237,7 @@ main {
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-        font-weight: bold;
+
         a {
           text-decoration: none;
           color: $color-black;
@@ -313,27 +318,27 @@ main {
       }
     }
   }
-
-  .trendingNews {
-    text-align: left;
-  }
 }
 
 //Hero section ends here
 
 //Section2 starts here
-.trendingNews {
-  text-transform: uppercase;
-  font-weight: 600;
-  color: $color-primary;
-  margin: 2rem 0 0 0;
-  text-align: center;
+.section-title {
+  h2 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    color: $color-primary;
+    text-align: center;
+    margin-top: 3rem;
+    letter-spacing: 0.5rem;
+  }
 }
 .news-grid {
   display: flex;
   gap: 25px;
   /* padding: 10px; */
-  padding: 4rem 0;
+  padding: 3rem 0;
   flex-direction: column;
   margin: auto;
 }
@@ -348,19 +353,40 @@ main {
   }
   h4 {
     padding: 5px 10px;
+    font-size: 0.8rem;
     margin: 0;
+    font-weight: 300px;
   }
   .date {
     display: flex;
     padding: 5px 10px;
     margin: 0;
+    padding: 0;
     p {
       margin: 0;
+      text-align: left;
+      padding: 0;
+      font-size: 0.4rem;
     }
+  }
+  .description {
+    font-size: 0.8rem;
   }
 }
 
 @media all and (min-width: 48rem) {
+  .section-title {
+    h2 {
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 2rem;
+      color: $color-primary;
+      text-align: center;
+      margin-top: 3rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+
   .news-grid {
     flex-wrap: wrap;
     flex-direction: row;
@@ -379,17 +405,38 @@ main {
 }
 
 /* footer */
+
+%container {
+  max-width: 75rem;
+  padding: 0 2rem;
+  width: 100%;
+  margin: auto;
+}
 .footer-wrap {
+  max-width: 100%;
+  padding: 2rem 0;
+  @extend %container;
   background-color: $color-secondary;
   .basicFooter {
-    width: 90%;
+    width: 75%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
+    h3 {
+      font-size: 1rem;
+      font-weight: 200px;
+      padding: 1rem 0;
+    }
     ul {
       padding-left: 0;
       li {
         list-style: none;
+        a {
+          font-size: 0.7rem;
+          padding: 0.2rem 0;
+          color: $color-black;
+          font-weight: 300px;
+        }
       }
     }
     p {
@@ -403,34 +450,24 @@ main {
 }
 
 .contact li:last-child {
-  color: $color-tertiary;
-  font-weight: bold;
+  color: $color-secondary;
 }
 
 /* footer-end */
 .footer-end {
-  width: 100%;
+  @extend %container;
+
+  max-width: 100%;
   height: 6vh;
   color: $color-white;
   background-color: $color-primary;
   display: flex;
   position: relative;
-  .kdk {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: 0.5rem 0 0 1rem;
-    .copywrite {
-      width: 100%;
-      font-size: 1rem;
-      text-align: center;
-      margin-top: 0.75rem;
-    }
-    .logo2 {
-      width: 30px;
-      height: 30px;
-      transform: rotate(10deg);
-      margin-top: 0.5rem;
-    }
+  .copywrite {
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 0.75rem;
   }
 }
 
@@ -487,7 +524,7 @@ main {
 /* end of hanburger icon */
 
 /* nav menu for desktop */
-@media (min-width: 800px) {
+@media (min-width: 53em) {
   nav {
     .nav-mobile {
       display: none;
@@ -495,11 +532,11 @@ main {
     .nav-list {
       display: flex;
       position: relative;
-      top: 8px;
+      top: 0rem;
       background-color: $color-primary;
       width: 100%;
-      margin: 2rem 3rem 0 0;
-      padding: 3px;
+      margin: 1rem;
+      padding: 0.3rem;
       left: 0;
     }
     .nav-list ul li {
@@ -510,6 +547,7 @@ main {
     .nav-list a {
       color: $color-white;
       font-size: 1rem;
+      padding-left: 1.5rem;
     }
   }
 
@@ -524,13 +562,12 @@ main {
     position: absolute;
     background-color: $color-grey-light;
     box-shadow: 0 3px 12px rgba(rgba($color-black, 0.15), 0.15);
-    padding: 1rem;
     text-align: left;
   }
 
   .nav-dropdown a {
     color: $color-black;
-    font-size: 1rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -544,13 +581,16 @@ main {
   .nav-dropdown {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: $color-white;
     box-shadow: 0 3px 12px rgba(rgba($color-black, 0.15), 0.15);
-    padding: 1rem;
-    text-align: left;
+
+    a {
+      text-align: left;
+      font-size: 0.5rem;
+    }
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 62em) {
   .footer-wrap {
     .basicFooter {
       grid-template-columns: 1fr 1fr 1fr 1fr;
