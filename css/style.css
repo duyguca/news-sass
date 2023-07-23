@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.4;
@@ -12,8 +11,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* header */
-/* Outer navigation wrapper */
+header {
+  background-color: #ef2042;
+}
+
 .navigation {
   height: 80px;
   background-color: #ef2042;
@@ -21,11 +22,12 @@ body {
 }
 .navigation .title {
   position: absolute;
-  padding-left: 20px;
   float: left;
   line-height: 1.4;
   text-transform: uppercase;
   font-size: 1.4em;
+  margin-top: 1rem;
+  font-style: italic;
 }
 .navigation .title a,
 .navigation .title a:visited {
@@ -44,7 +46,7 @@ body {
 .navigation .title .logo {
   position: absolute;
   width: 50px;
-  top: 1rem;
+  top: 0rem;
   left: 5rem;
   transform: rotate(15deg);
   animation-duration: 2s;
@@ -91,7 +93,6 @@ nav ul {
   list-style: none;
 }
 nav ul li {
-  float: left;
   position: relative;
   /* Dropdown list */
 }
@@ -102,29 +103,28 @@ nav ul li:hover {
   transition: color 0.3s;
 }
 nav ul li a,
+nav ul li a:focus,
+nav ul li a:active,
 nav ul li a:visited {
   display: block;
-  padding: 0 20px;
+  padding: 1rem;
   line-height: 1.4;
   background: #ef2042;
   color: #fff;
   text-decoration: none;
 }
 nav ul li a:hover,
+nav ul li a:focus:hover,
+nav ul li a:active:hover,
 nav ul li a:visited:hover {
-  background-color: #2ec210;
+  background-color: #bc1a35;
   color: #fff;
-}
-nav ul li a:not(:only-child):after,
-nav ul li a:visited:not(:only-child):after {
-  padding-left: 4px;
-  content: " ▾";
 }
 nav ul li ul li {
   min-width: 190px;
 }
 nav ul li ul li a {
-  padding: 15px;
+  padding-left: 15px;
   line-height: 1.4;
 }
 nav ul li ul li .nav-dropdown {
@@ -140,18 +140,17 @@ nav .nav-list {
   display: none;
   position: absolute;
   z-index: 1000;
-  top: 80px;
+  top: 4rem;
   right: 0;
-  width: 100%;
-  background-color: #fff8c5;
+  left: 0;
+  max-width: 100%;
+  background-color: #ffebe9;
   margin-top: 0;
-  padding: 1rem 0 0 3rem;
   text-align: center;
-  gap: 2px;
 }
 nav .nav-list a {
   color: #000;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 nav .nav-list a:link {
   text-decoration: none;
@@ -175,6 +174,19 @@ main {
   margin: auto;
 }
 
+.hero-section .left-side .post-inner-content {
+  width: 100%;
+  max-width: 640px;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  padding: 1rem 0.5rem;
+  z-index: 999;
+  margin: auto;
+  margin-top: 0;
+  right: 0;
+}
+
 .hero-section {
   display: flex;
   justify-content: space-between;
@@ -194,18 +206,6 @@ main {
   object-fit: cover;
   width: 100%;
   height: 100%;
-}
-.hero-section .left-side .post-inner-content {
-  width: 100%;
-  max-width: 640px;
-  position: relative;
-  text-align: center;
-  background-color: #fff;
-  padding: 1rem 0.5rem;
-  z-index: 999;
-  margin: auto;
-  margin-top: 0;
-  right: 0;
 }
 .hero-section .left-side .post-inner-content aside .date {
   list-style: none;
@@ -232,7 +232,6 @@ main {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  font-weight: bold;
 }
 .hero-section .left-side .post-inner-content h3 a {
   text-decoration: none;
@@ -305,23 +304,22 @@ main {
   .hero-section .right-side .sub-title h2 {
     text-align: left;
   }
-  .trendingNews {
-    text-align: left;
-  }
 }
-.trendingNews {
+.section-title h2 {
   text-transform: uppercase;
   font-weight: 600;
+  font-size: 1rem;
   color: #ef2042;
-  margin: 2rem 0 0 0;
   text-align: center;
+  margin-top: 3rem;
+  letter-spacing: 0.5rem;
 }
 
 .news-grid {
   display: flex;
   gap: 25px;
   /* padding: 10px; */
-  padding: 4rem 0;
+  padding: 3rem 0;
   flex-direction: column;
   margin: auto;
 }
@@ -337,18 +335,36 @@ main {
 }
 .card h4 {
   padding: 5px 10px;
+  font-size: 0.8rem;
   margin: 0;
+  font-weight: 300px;
 }
 .card .date {
   display: flex;
   padding: 5px 10px;
   margin: 0;
+  padding: 0;
 }
 .card .date p {
   margin: 0;
+  text-align: left;
+  padding: 0;
+  font-size: 0.4rem;
+}
+.card .description {
+  font-size: 0.8rem;
 }
 
 @media all and (min-width: 48rem) {
+  .section-title h2 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #ef2042;
+    text-align: center;
+    margin-top: 3rem;
+    letter-spacing: 0.5rem;
+  }
   .news-grid {
     flex-wrap: wrap;
     flex-direction: row;
@@ -365,20 +381,40 @@ main {
   }
 }
 /* footer */
+.footer-end, .footer-wrap, .navigation {
+  max-width: 75rem;
+  padding: 0 2rem;
+  width: 100%;
+  margin: auto;
+}
+
 .footer-wrap {
-  background-color: #fff8c5;
+  max-width: 100%;
+  padding: 2rem 0;
+  background-color: #ffebe9;
 }
 .footer-wrap .basicFooter {
-  width: 90%;
+  width: 75%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
+}
+.footer-wrap .basicFooter h3 {
+  font-size: 1rem;
+  font-weight: 200px;
+  padding: 1rem 0;
 }
 .footer-wrap .basicFooter ul {
   padding-left: 0;
 }
 .footer-wrap .basicFooter ul li {
   list-style: none;
+}
+.footer-wrap .basicFooter ul li a {
+  font-size: 0.7rem;
+  padding: 0.2rem 0;
+  color: #000;
+  font-weight: 300px;
 }
 .footer-wrap .basicFooter p {
   line-height: 1.4;
@@ -389,35 +425,23 @@ main {
 }
 
 .contact li:last-child {
-  color: #2ec210;
-  font-weight: bold;
+  color: #ffebe9;
 }
 
 /* footer-end */
 .footer-end {
-  width: 100%;
+  max-width: 100%;
   height: 6vh;
   color: #fff;
   background-color: #ef2042;
   display: flex;
   position: relative;
 }
-.footer-end .kdk {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 0.5rem 0 0 1rem;
-}
-.footer-end .kdk .copywrite {
+.footer-end .copywrite {
   width: 100%;
   font-size: 1rem;
   text-align: center;
   margin-top: 0.75rem;
-}
-.footer-end .kdk .logo2 {
-  width: 30px;
-  height: 30px;
-  transform: rotate(10deg);
-  margin-top: 0.5rem;
 }
 
 /* hamburger icon */
@@ -468,18 +492,18 @@ main {
 
 /* end of hanburger icon */
 /* nav menu for desktop */
-@media (min-width: 800px) {
+@media (min-width: 53em) {
   nav .nav-mobile {
     display: none;
   }
   nav .nav-list {
     display: flex;
     position: relative;
-    top: 8px;
+    top: 0rem;
     background-color: #ef2042;
     width: 100%;
-    margin: 2rem 3rem 0 0;
-    padding: 3px;
+    margin: 1rem;
+    padding: 0.3rem;
     left: 0;
   }
   nav .nav-list ul li {
@@ -489,6 +513,7 @@ main {
   nav .nav-list a {
     color: #fff;
     font-size: 1rem;
+    padding-left: 1.5rem;
   }
   header nav ul li:hover {
     background: #333;
@@ -500,12 +525,11 @@ main {
     position: absolute;
     background-color: #333;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    padding: 1rem;
     text-align: left;
   }
   .nav-dropdown a {
     color: #000;
-    font-size: 1rem;
+    font-size: 0.6rem;
   }
 }
 /* Footer grid */
@@ -518,11 +542,13 @@ main {
     position: absolute;
     background-color: #fff;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    padding: 1rem;
+  }
+  .nav-dropdown a {
     text-align: left;
+    font-size: 0.5rem;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 62em) {
   .footer-wrap .basicFooter {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
